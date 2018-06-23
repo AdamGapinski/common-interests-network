@@ -16,12 +16,12 @@ public class CommonInterestsServiceApplication {
     @Bean
     CommandLineRunner init(PostService postService, CategoryService categoryService) {
         return args -> {
-            postService.addPost("Hello everyone");
-            postService.addPost("Welcome");
-            postService.addPost("Another post");
-            categoryService.addCategory("programming");
-            categoryService.addCategory("sport");
-            categoryService.addCategory("football");
+//            postService.addPost("Hello everyone");
+//            postService.addPost("Welcome");
+//            postService.addPost("Another post");
+//            categoryService.addCategory("programming");
+//            categoryService.addCategory("sport");
+//            categoryService.addCategory("football");
         };
     }
 }
