@@ -52,6 +52,13 @@ public class GroupService {
         groupRepository.save(toJoin);
     }
 
+    public void leaveGroup(Group input, User user) {
+        Group toLeave = groupRepository.findByName(input.getName())
+                .orElseThrow(() -> new GroupNotFoundException(String.format("Group %s not found", input.getName())));
+        toLeave.getUsers().removeIf(u -> u.getId().equals(user.getId()));
+        groupRepository.save(toLeave);
+    }
+
     public void updateGroup(Long groupId, Group input) {
         Group toSave = groupRepository.findById(groupId).orElseThrow(() -> new RuntimeException("Group not found"));
         toSave.setName(input.getName());
