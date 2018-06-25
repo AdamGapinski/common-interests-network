@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.security.Principal;
 import java.util.Collection;
 
 @RestController
@@ -53,6 +52,14 @@ public class GroupRestController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         User user = userService.findByUsername(userDetails.getUsername());
         groupService.joinGroup(input, user);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/user/groups/leave")
+    ResponseEntity<?> leaveGroup(@RequestBody Group input, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = userService.findByUsername(userDetails.getUsername());
+        groupService.leaveGroup(input, user);
         return ResponseEntity.noContent().build();
     }
 
