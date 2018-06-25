@@ -16,10 +16,3 @@ cache:
   directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
-deploy:
-  provider: heroku
-  api_key:
-    secure: SEGs+I8KnmI1ozjsQHlBM2nXsdsZIVVhQJiRNpsx3Mpkh6r9r1CgePuq8O5NEilvwPhMT6dEMjx8BtwMgw/OfPaQanixtO5/m+gzFLW1CWZ56pDynEoO6Vh9sEY/CM9wtGRrDM2koKD6BHm2aqeFnzU7feSgTre317tbc/IaBNWmm8RJQf/9YjoEzuYLYZZa9BxTweNTt2wOpNhCVZc5H+4V3zLOwh4Vcru2xArxrqOW2+s7w3qZnKUy4SYuvhS4MtOQkFMOIdYXyE44m/Lt0xCVZm6g5tD6z8nv6GnKH1p1GMw8VQsUOtcnQ02h7pOxFhzqgJlhpRtI5lyEaxKBmk3lDErh+qmw7elKvIZy0bCF5FswbN4rqNrLBwBIVKCbmLUCUIYS3ABKP+CPG4YRvuonFBpVmHKGS3rVQMylGLyVkpZwK7vsy46NIIDCGe6CpJsSsNdDpb4OQJMPsztquTBtGWv594UMCSAogJ3H+3nv8NMUXVRqioWVuVqGscTp1DvzFclA/QWFNJ24G3b3vuvxchd3f+SCJORQEZczB9NBzPkhGY6vh2SBpvFYg/hzRMdpo47+we8xLjKHLoZu9PPLRHuBBO8B6bz/O+HCY4u07IKzTuz1nYBatUPxvilw570/zI1b8AoxC4LJ3Oo1KCC4NoZzPdppBiFSklPHg+E=
-  app: common-interests-network2
-  on:
-    repo: AdamGapinski/common-interests-network
