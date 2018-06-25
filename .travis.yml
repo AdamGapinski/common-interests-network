@@ -1,18 +1,22 @@
 env:
   global:
-    - CLIENT_ADDRESS_HIDDEN=http://localhost:3000
-    - CLIENT_ID_HIDDEN=test_id
-    - CLIENT_SECRET_HIDDEN=test_secret
+  - CLIENT_ADDRESS_HIDDEN=http://localhost:3000
+  - CLIENT_ID_HIDDEN=test_id
+  - CLIENT_SECRET_HIDDEN=test_secret
 language: java
 jdk: oraclejdk8
 install: true
 script:
-  - gradle assemble
-  - gradle test
+- gradle assemble
+- gradle test
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+deploy:
+  provider: heroku
+  api_key:
+    secure: Lj6+AxhFdGBp8Ipej71ZZH8zmoRhARM86OCyamxKyq+5b5X3QniDCItE1xhIC6jT1LBj318WpUvGzPdb5xebEDaQ/lOK/ob4y0SsdHUECIPxWPrJptZ7qqsd8D735tIicZ4dOuldfsmJDfjFb9/OI/6SwFQZR7R78q32Yptk8on1dKFykh0ZnQifu/pJ7WyGOC/Y9gGeHgGkCUesEVfzUaTk737Y7HqT+vzTQ3qXC0b3qVfmLrqpt2cm7FtyhsseiDHGrdyxt9Ulb6ImFPdqMhmU9fcTeGmmSgXEIPwmrA4vLq9Ebr+lFZYGXaB1UODJcudFl05lqeS3ZAXfaiZU1o1zGfNI9I1DudUrQ95EJHY9wf95ENvjg4EIlWJC2acKV9zoLiNzSh2y7SeYlDKwi4/pJpvKYLfjUrNnM0gjOJNwxhk49UpTrVGimWNrZn9beUUmPjac9mQMEJdvdMYxT6XXUTZu04bGM00cvMLTqjdaBmVUfsGVNGte1yC8nf+LFFgxoZsiW7oT6xApzQEeQErslBGGPwWiY1tVc6BaHiCaqMU/SdkwfBgVVAKCfovb6nYiQ8TR5NEpBrpmnnZ/yz6XiYqv881LWNeYEy4w2rIjpUCrx5vkXeWYKj9m8X88S7bY4VnJtNK93gplwTl7upkXvBMtbhwuxHWsXSqqMUs=
