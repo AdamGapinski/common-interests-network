@@ -1,6 +1,7 @@
 package com.adam.commoninterestsservice.services;
 
 import com.adam.commoninterestsservice.entities.Like;
+import com.adam.commoninterestsservice.entities.Post;
 import com.adam.commoninterestsservice.entities.User;
 import com.adam.commoninterestsservice.exceptions.PostNotFoundException;
 import com.adam.commoninterestsservice.repositories.LikeRepository;
@@ -31,9 +32,13 @@ public class LikeService {
     }
 
     public Like addLike(Long postId, User user) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new PostNotFoundException("Post not found"));
+        if (likeRepository.findByPostAndAuthor(post, user).isPresent()) {
+            throw new RuntimeException("Like duplicated");
+        }
         Like toSave = new Like();
         toSave.setAuthor(user);
-        toSave.setPost(postRepository.findById(postId).orElseThrow(() -> new PostNotFoundException("Post not found")));
+        toSave.setPost(post);
         return likeRepository.save(toSave);
     }
 }
