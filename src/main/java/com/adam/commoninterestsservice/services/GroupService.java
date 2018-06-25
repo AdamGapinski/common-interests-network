@@ -2,6 +2,8 @@ package com.adam.commoninterestsservice.services;
 
 import com.adam.commoninterestsservice.entities.Group;
 import com.adam.commoninterestsservice.entities.User;
+import com.adam.commoninterestsservice.exceptions.GroupJoinDuplicationException;
+import com.adam.commoninterestsservice.exceptions.GroupNotFoundException;
 import com.adam.commoninterestsservice.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,17 @@ public class GroupService {
     }
 
     public Group get(Long groupId) {
-        return groupRepository.findById(groupId).orElseThrow(() -> new RuntimeException("Group not found"));
+        return groupRepository.findById(groupId).orElseThrow(() -> new GroupNotFoundException("Group not found"));
+    }
+
+    public void joinGroup(Group input, User user) {
+        Group toJoin = groupRepository.findByName(input.getName())
+                .orElseThrow(() -> new GroupNotFoundException(String.format("Group %s not found", input.getName())));
+        if (toJoin.getUsers().stream().anyMatch(u -> u.getId().equals(user.getId()))) {
+            throw new GroupJoinDuplicationException("User have already joined this group");
+        }
+        toJoin.getUsers().add(user);
+        groupRepository.save(toJoin);
     }
 
     public void updateGroup(Long groupId, Group input) {

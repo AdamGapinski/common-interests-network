@@ -48,6 +48,14 @@ public class GroupRestController {
         return ResponseEntity.created(location).build();
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/user/groups")
+    ResponseEntity<?> joinGroup(@RequestBody Group input, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = userService.findByUsername(userDetails.getUsername());
+        groupService.joinGroup(input, user);
+        return ResponseEntity.noContent().build();
+    }
+
     private URI buildLocation(Group created) {
         return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(created.getId()).toUri();
