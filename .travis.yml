@@ -1,7 +1,8 @@
 env:
-  - CLIENT_ADDRESS_HIDDEN="http://localhost:3000"
-  - CLIENT_ID_HIDDEN="test_id"
-  - CLIENT_SECRET_HIDDEN="test_secret"
+  global:
+    - CLIENT_ADDRESS_HIDDEN=http://localhost:3000
+    - CLIENT_ID_HIDDEN=test_id
+    - CLIENT_SECRET_HIDDEN=test_secret
 language: java
 jdk: oraclejdk8
 install: true
