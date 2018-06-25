@@ -8,19 +8,19 @@ jdk: oraclejdk8
 install: true
 script:
 - gradle assemble
-#- gradle test
-#before_cache:
-#- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-#- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-#cache:
-#  directories:
-#  - "$HOME/.gradle/caches/"
-#  - "$HOME/.gradle/wrapper/"
+- gradle test
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 deploy:
   provider: heroku
   on:
     all_branches: true
     repo: AdamGapinski/common-interests-network
   api_key:
-    secure: "xbdAz8xYSwB1OILI4rtSfNfBlr5Rj0/Usdfr9c9VFy/FovHJzh7tbXepzqjYNHgEc03jSr1DpbkTfzvJxbVBy3WJxDXYXsYinien7SnlvFwEpNMZ/AQybSQzNR3cSIfTM1dmK1Jvo0TPXQ7bukPv9o8z0dX2jUsb0IpfR9BLB1KT3+vsZJ6fMbpFkMEZSVsKMoJGiOKNwYrqwWpg/2Hc5kFjVU1Nd+rAcTvBMOHxfG9lUZysJHZoBi95eO/+gFkMdlJdFaywsYk3k7KdfjE6rSgNxzX40WwXScnqiEUH0nDhuCiuFXtrgiBg7WSIoIo6gx9wfzqOi3ENtYrBWnmqABTHzB46Ubgx8pawM5H39xvTbew4VmByWeq0dyrVnzjrrEqVBUFXLjoq89oX/4UzBZOQorswm4M6rVvCWEfvRZ6LoNJ9dX1+yiTS5ZGilQof2cF3ua9j/0hj49Un2srF0PPujiy1qf73KV93XxmS3APb9d0k6xxoVeTSDENcnn74Pw4nvCiYBod1zbyZ1tbug7D2zzJzBSmls77r0FRIp1JxPaQoNc5xTOO0bIsIv4qsHfxwzWbLEsv4Cw/FTSZ5xSRPu78sm0HqJTMke0qFLojHIEXCp2xdOgWyWo+V6w0ZCXKhzPHBiDBB9+D27XlkNnLSjAmHt3T/5+f7QB6hSbE="
+    secure: BghiQWRJcFbM/5t1dZB8MztLxEHWBVgSzd5YzpXYRVH+3GrvKk6VVtVoNqeoxhbcfuFwW1hblSIUeA+PS7YuBl9WUGXXW5Kt7atUOCse2/x6F3dwdI6SD1uwDtsiuNDyLgrImfOQZapUm0eoD/FyrEdf+YGRYgEV9qUP+/oq6hZ0KA7VuXvXAbyrlDAcSqOF65Cp8SQnMQIuUukmVcAKtsYsTIMnlrks3bTt9hd+HqCuDpia+OFeLhnMEJOYSm3hZh1MsQzeRWFBZTlt5BPkEyUFjiHWWImXqF1XxWHRasHR2Vsd/olYNJlUyxAozzE+BCPBFg6hSK6afG8YmSEyegdjXuIt8EVRrZ6htorBEh8MlOZR9PI+6p/P+ToFV1cuCc5IutwSTHsvpyJwKOU4Jh6x3DBh9wt8Xe8hFdTczc4TiXDcK/Yd8yHczbKy+RE1ecG+NwB00RrmBp2786X4VnWF+clUA+ZAczHofjmP4bGrVQdLIiOsG3UM4Y+ytMU6vZvxUSEKvayY3msRXANVcJHeWGInk+SMHdgs30+IEjK6Kdh+Ca1YeXKIebQFORHYJs2BQrEOrEB4ji4BgSobntWILLCowqI4c8+G7MpkO+3jtPsDVE4CPMfbssSflnVqXCYn5j3rAl6ScSngYriP9PNpEE9iyUl3LceyLIco/3k=
   app: common-interests-network
